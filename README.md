@@ -1,5 +1,5 @@
 # ScreenRotator
-Easy applet for rotating the screen on Unity Desktop
+Small applet for rotating the screen on Unity Desktop
 
 ![ScreenRotator](http://i.imgur.com/6RU3gvT.png?1)
 
