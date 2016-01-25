@@ -28,6 +28,10 @@ def build_menu():
     item_rotate = Gtk.MenuItem('Rotate')
     item_rotate.connect('activate', rotate_screen)
     menu.append(item_rotate)
+    #flip
+    item_flip = Gtk.MenuItem('Flip')
+    item_flip.connect('activate', flip_screen)
+    menu.append(item_flip)
     #seperator
     seperator = Gtk.SeparatorMenuItem()
     menu.append(seperator)
@@ -46,6 +50,16 @@ def rotate_screen(source):
         direction ="normal"
     call(["xrandr", "-o", direction])
     orientation = direction
+
+def flip_screen(source):
+    global orientation
+    if orientation == "normal":
+        direction = "inverted"
+    elif orientation == "inverted":
+        direction ="normal"
+    call(["xrandr", "-o", direction])
+    orientation = direction
+
 
 def increase_brightness(source):
     call(["xbacklight", "-inc", "20"])
