@@ -10,7 +10,7 @@ APPINDICATOR_ID = "screenrotator"
 orientation = "normal"
 
 def main():
-    indicator = AppIndicator.Indicator.new(APPINDICATOR_ID, os.path.abspath('/home/YOURUSER/YOUR-DOWNLOAD-LOCATION/ScreenRotator/icon.svg'), AppIndicator.IndicatorCategory.SYSTEM_SERVICES)
+    indicator = AppIndicator.Indicator.new(APPINDICATOR_ID, os.path.abspath('./icon.svg'), AppIndicator.IndicatorCategory.SYSTEM_SERVICES)
     indicator.set_status(AppIndicator.IndicatorStatus.ACTIVE)
     indicator.set_menu(build_menu())
     Gtk.main()
@@ -66,9 +66,6 @@ def increase_brightness(source):
 
 def decrease_brightness(source):
     call(["xbacklight", "-dec", "20"])
-
-def quit(source):
-    Gtk.main_quit()
 
 if __name__ == "__main__":
     #make sure the screen is in normal orientation when the script starts
