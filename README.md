@@ -4,7 +4,7 @@ It is an enhancement of the project https://github.com/frecel/ScreenRotator,
 modified and tested on Thinkpad X1 Yoga with Linux Mint 18.2 (kernel 4.10.0-38), Cinnamon 64-Bit.
 It should work for other laptops with the Wacom screen and pen. 
 
-[image](http://github.com/henrysting/ScreenRotator/raw/master/menu.jpg)
+![image](http://github.com/henrysting/ScreenRotator/raw/master/menu.jpg)
 
 ScreenRotator requires python3-gi to work. You can install it by running:
 ```
