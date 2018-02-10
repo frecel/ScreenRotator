@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 
-# Screen rotator and other useful swtiches for the tablet mode of Ubuntu/Mint Linux.
+# Screen rotator and other useful switches for the tablet mode of Ubuntu/Mint Linux.
 # origially from https://github.com/frecel/ScreenRotator
-# Yu Heng (henrysting@gmail.com) modified for Thinkpad X1 Yoga 
+# Yu Heng (henrysting@gmail.com) modified and tested on Thinkpad X1 Yoga 
+# with Linux Mint 18.2 (kernel 4.10.0-38), Cinnamon 64-Bit
 # It should work for other laptops with the Wacom screen and pen. 
 # https://github.com/henrysting/ScreenRotator
 #
-# Note: Work with kernel 4.10.0-38, fail with the kernel 4.13.0-16. 
+# Note: 
+# The screen rotating function is incompatible with the kernel 4.13.0-16. 
+#
 # Changelog: 
 # 2017-11-13: Start
 # 2018-02-09: add touchscreen on/off, onboard
@@ -63,7 +66,6 @@ def main():
     Gtk.main()
         
 def build_menu():
-    global pen_id,finger_id
     menu = Gtk.Menu()
        
     #reset
@@ -157,7 +159,6 @@ def build_menu():
     return menu
 
 def reset_screen(source):
-    global pen_id
     call(["xrandr", "-o", "normal"])
     if pen_id.isdigit():
         call(["xsetwacom", "set", pen_id, "rotate","none"])
@@ -165,7 +166,6 @@ def reset_screen(source):
         call(["xsetwacom", "set", finger_id, "rotate","none"])
     
 def rotate_screen(source):
-    global pen_id
     call(["xrandr", "-o", "left"])
     if pen_id.isdigit():
         call(["xsetwacom", "set", pen_id, "rotate","ccw"])
@@ -173,7 +173,6 @@ def rotate_screen(source):
         call(["xsetwacom", "set", finger_id, "rotate","ccw"])
 
 def rotate_screen_right(source):
-    global pen_id
     call(["xrandr", "-o", "right"])
     if pen_id.isdigit():
         call(["xsetwacom", "set", pen_id, "rotate","cw"])
@@ -181,7 +180,6 @@ def rotate_screen_right(source):
         call(["xsetwacom", "set", finger_id, "rotate","cw"])
     
 def flip_screen(source):
-    global pen_id
     call(["xrandr", "-o", "inverted"])
     if pen_id.isdigit():
         call(["xsetwacom", "set", pen_id, "rotate","half"])
@@ -189,29 +187,23 @@ def flip_screen(source):
         call(["xsetwacom", "set", finger_id, "rotate","half"])
 
 def touchscreen_off(source):
-    global finger_id
     call(["xinput", "disable", finger_id])
 
 def touchscreen_on(source):
-    global finger_id
     call(["xinput", "enable", finger_id])
 
 
 def touchpad_off(source):
-    global touchpad_id
     call(["xinput", "disable", touchpad_id])
 
 def touchpad_on(source):
-    global touchpad_id
     call(["xinput", "enable", touchpad_id])
 
     
 def trackpoint_off(source):
-    global trackpoint_id
     call(["xinput", "disable", trackpoint_id])
 
 def trackpoint_on(source):
-    global trackpoint_id
     call(["xinput", "enable", trackpoint_id])
 
 
@@ -232,6 +224,11 @@ def decrease_brightness(source):
 if __name__ == "__main__":
     #make sure the screen is in normal orientation when the script starts
     call(["xrandr", "-o", "normal"])
+    if pen_id.isdigit():
+        call(["xsetwacom", "set", pen_id, "rotate","none"])
+    if finger_id.isdigit():
+        call(["xsetwacom", "set", finger_id, "rotate","none"])
+    
     #keyboard interrupt handler
     signal.signal(signal.SIGINT, signal.SIG_DFL)
     main()
