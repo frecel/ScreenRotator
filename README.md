@@ -1,10 +1,8 @@
 # ScreenRotator+
 Small applet assembles screen rotator and other useful switches for the tablet mode of Ubuntu/Mint Linux.
 It is an enhancement of the project https://github.com/frecel/ScreenRotator, 
-modified and tested on Thinkpad X1 Yoga with Linux Mint 18.2 (kernel 4.10.0-38), Cinnamon 64-Bit.
-It should work for other laptops with the Wacom screen and pen. 
-
-Note: The screen rotating function is incompatible  with the kernel 4.13.0-16. 
+modified and tested on Thinkpad X1 Yoga with Linux Mint 19.3 (kernel 5.0.0-32), Cinnamon 64-Bit.
+It should work for other laptops with the Wacom screen and stylus. 
 
 ![image](https://raw.githubusercontent.com/henrysting/ScreenRotator/master/menu.jpg)
 
